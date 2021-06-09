@@ -1,6 +1,7 @@
 from os import system
 
 
+# Runs any given shell command
 def bash_command(user_in):
     _ = system(user_in)
 
