@@ -6,7 +6,7 @@ framework = {
     'assets': float(),
     'bills': [{'bill name': [int(), float()]}],         # int = days between bills
     'income': [{'source': [int(), float()]}],           # float = bill amount
-    'adjustments': [{float(): [datetime(), str()]}],    # str = note
+    'adjustments': [{float(): [datetime, str()]}],      # str = note
                                                         # datetime = timestamp
     # 'daily shift' is the sum of all bills/income divided by 30.4
     'daily_shift': float(),
