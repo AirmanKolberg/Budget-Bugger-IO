@@ -45,14 +45,15 @@ def get_total_bills_or_income(dictionary, data_point):
     return total_bills
 
 
-def get_total_adjustments(dictionary):
+# The data_point should either be 'adjustments' or 'transactions'
+def get_total_adjustments_or_transactions(dictionary, data_point):
 
-    total_adjustments = 0
-    for adjustments in dictionary['adjustments']:
-        for adjustment in adjustments:
-            total_adjustments += adjustment
+    total_amount = 0
+    for adjustments in dictionary[data_point]:
+        for transaction in adjustments:
+            total_amount += transaction
 
-    return total_adjustments
+    return total_amount
 
 
 if __name__ == '__main__':
