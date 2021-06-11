@@ -62,5 +62,13 @@ def setup_incomes():
     return incomes
 
 
+# This will be for testing/debugging purposes
+def setup_all():
+
+    assets = setup_assets()
+    bills = setup_bills()
+    incomes = setup_incomes()
+
+
 if __name__ == '__main__':
     pass
