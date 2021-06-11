@@ -22,5 +22,17 @@ def get_float_value_from_user(message_prompt):
     return value
 
 
+# Use this for any user input that must be an integer
+def get_int_value_from_user(message_prompt):
+
+    try:
+        value = int(input(message_prompt))
+    except ValueError:
+        print('Please try again, integers only...')
+        value = get_int_value_from_user(message_prompt)
+
+    return value
+
+
 if __name__ == '__main__':
     pass
