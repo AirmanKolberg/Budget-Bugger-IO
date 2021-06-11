@@ -41,6 +41,5 @@ def setup_bills():
     return bills
 
 
-
 if __name__ == '__main__':
     pass
