@@ -24,7 +24,7 @@ def create_new_framework(assets, bills, incomes, adjustments,
     framework = {
         'assets': assets,
         'bills': bills,
-        'income': incomes,
+        'incomes': incomes,
         'adjustments': adjustments,
         'transactions': transactions,
         'daily_shift': daily_shift,
