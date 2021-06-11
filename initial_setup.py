@@ -27,7 +27,19 @@ def setup_bills():
 
     while adding_bills:
         name = input('Bill name: ')
+
+        # NOTE: Add functionality for "monthly", "weekly", etc.
         frequency = get_int_value_from_user('Day between bills: ')
+
+        amount = get_float_value_from_user(f'{name} amount: ')
+
+        new_bill = {name: [frequency, amount]}
+        bills.append(new_bill)
+
+        adding_bills = verify_yes_or_no('Add another?\n')
+
+    return bills
+
 
 
 if __name__ == '__main__':
