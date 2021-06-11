@@ -41,5 +41,26 @@ def setup_bills():
     return bills
 
 
+def setup_incomes():
+
+    adding_income = True
+    incomes = list()
+
+    while adding_income:
+        name = input('Income source: ')
+
+        # NOTE: Add functionality for "monthly", "weekly", etc.
+        frequency = get_int_value_from_user('Day between pay: ')
+
+        amount = get_float_value_from_user(f'{name} amount: ')
+
+        new_income = {name: [frequency, amount]}
+        incomes.append(new_income)
+
+        adding_income = verify_yes_or_no('Add another?\n')
+
+    return incomes
+
+
 if __name__ == '__main__':
     pass
