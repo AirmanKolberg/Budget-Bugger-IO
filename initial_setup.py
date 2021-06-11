@@ -1,4 +1,4 @@
-from user_inputs import verify_yes_or_no
+from user_inputs import verify_yes_or_no, get_float_value_from_user
 
 
 def setup_assets():
@@ -8,7 +8,7 @@ def setup_assets():
 
     while adding_assets:
         name = input('Account name: ')
-        balance = input(f'{name} balance: ')
+        balance = get_float_value_from_user(input(f'{name} balance: '))
 
         # Create the dictionary and add it to the list to be returned
         new_asset = {name: balance}
