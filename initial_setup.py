@@ -62,6 +62,31 @@ def setup_incomes():
     return incomes
 
 
+def setup_savings(bills, incomes):
+
+    def get_sum_of_all_values(list_of_dicts):
+
+        # The effect of everything combined, beginning of course at 0
+        total_daily_effect = 0
+
+        # Separate the list into single dicts
+        for each_dict in list_of_dicts:
+
+            # Get the key to access the value pairs
+            for the_key in each_dict:
+
+                # Returns the amount
+                amount = each_dict[the_key][1]
+
+                # Number of days between payments
+                frequency = each_dict[the_key][0]
+
+
+
+
+
+
+
 # This will be for testing/debugging purposes
 def setup_all():
 
