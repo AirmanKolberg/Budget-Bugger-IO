@@ -3,3 +3,5 @@ secrets.py
 testFile.json
 push.sh
 notes.txt
+commit.py
+commit.sh
