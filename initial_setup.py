@@ -152,9 +152,6 @@ percent     -    have it based on a percentage of your daily
     return daily_framework
 
 
-def calc_day_zero_budget(assets, daily_budget)
-
-
 # This will be for testing/debugging purposes
 def setup_all():
 
@@ -173,8 +170,6 @@ def setup_all():
     }
     """
     daily_framework = setup_savings_and_dailies(bills, incomes, assets)
-
-
 
 
 if __name__ == '__main__':
