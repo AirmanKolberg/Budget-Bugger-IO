@@ -1,2 +1,7 @@
+from initial_setup import setup_all
+
+
 if __name__ == '__main__':
-    print("Thank you for checking out my app!\nIt'll be completed by the 21st.")
+
+    # Debugging...
+    setup_all()

@@ -1,4 +1,5 @@
 from user_inputs import *
+from system_commands import get_current_time_and_date
 
 
 def setup_assets():
@@ -15,7 +16,8 @@ def setup_assets():
         assets.append(new_asset)
 
         # Verify if user wishes to add another
-        adding_assets = verify_yes_or_no('Add another?\n')
+        add_another = input('Add another?\n').lower()
+        adding_assets = verify_yes_or_no(add_another)
 
     return assets
 
@@ -36,7 +38,8 @@ def setup_bills():
         new_bill = {name: [frequency, amount]}
         bills.append(new_bill)
 
-        adding_bills = verify_yes_or_no('Add another?\n')
+        add_another = input('Add another?\n').lower()
+        adding_bills = verify_yes_or_no(add_another)
 
     return bills
 
@@ -57,14 +60,15 @@ def setup_incomes():
         new_income = {name: [frequency, amount]}
         incomes.append(new_income)
 
-        adding_income = verify_yes_or_no('Add another?\n')
+        add_another = input('Add another?\n').lower()
+        adding_income = verify_yes_or_no(add_another)
 
     return incomes
 
 
 def setup_savings(bills, incomes):
 
-    def get_sum_of_all_values(list_of_dicts, bills_or_incomes):
+    def get_sum_of_all_values(list_of_dicts):
 
         # The effect of everything combined, beginning of course at 0
         total_daily_effect = 0
@@ -78,10 +82,6 @@ def setup_savings(bills, incomes):
                 # Returns the amount
                 amount = each_dict[the_key][1]
 
-                # Ensures bills negatively affect the total
-                if bills_or_incomes == 'bills':
-                    amount *= -1
-
                 # Number of days between payments
                 frequency = each_dict[the_key][0]
 
@@ -89,9 +89,51 @@ def setup_savings(bills, incomes):
                 daily_effect = (amount / frequency).__round__(2)
                 total_daily_effect += daily_effect
 
+        return total_daily_effect
 
+    # Calculate daily budget
+    daily_loss = get_sum_of_all_values(bills)
+    daily_gain = get_sum_of_all_values(incomes)
+    daily_budget = daily_gain - daily_loss
 
+    savings_options = """Would you like savings based on a:
+set         -    set rate, or manually choose the daily savings
+percent     -    have it based on a percentage of your daily
+"""
 
+    option_set = False
+    while not option_set:
+
+        # Get the savings method from the user
+        option_selected = input(savings_options).lower()
+
+        if option_selected == 'set':
+
+            daily_savings = (get_float_value_from_user('Enter daily savings: ')).__round__(2)
+            daily_remaining = daily_budget - daily_savings
+            option_set = True
+
+        elif option_selected == 'percent':
+
+            percentage = get_float_value_from_user('Enter percentage to save (ie 13.2 for 13.2%): ')
+
+            # Convert to percentage
+            percentage *= .01
+
+            daily_savings = (daily_budget * percentage).__round__(2)
+            daily_remaining = daily_budget - daily_savings
+            option_set = True
+
+        else:
+
+            print(f"{option_selected} is neither 'set' nor 'percent', please try again.")
+
+    date_now = get_current_time_and_date()
+
+    # {'Day Zero': [daily_addition_since_day_zero, current_savings_balance]}
+    savings_framework = {date_now: [daily_savings, 0]}
+
+    return savings_framework, daily_remaining
 
 # This will be for testing/debugging purposes
 def setup_all():
@@ -100,14 +142,7 @@ def setup_all():
     bills = setup_bills()
     incomes = setup_incomes()
 
-    """
-    Theoretically, at startup, there should be no
-    need to make adjustments or transactions, so
-    these can be skipped, or just created as an
-    empty list just waiting to be appended.  :)
-    """
-
-    # NOTE:  Next- determine savings
+    savings, daily_budget = setup_savings(bills, incomes)
 
 
 if __name__ == '__main__':

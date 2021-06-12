@@ -34,8 +34,3 @@ def create_adjustment_or_transaction(adjustment_or_transaction):
     data = {amount: [now, note]}
 
     return data
-
-
-# Calculates the daily current budget
-def determine_daily_shift():
-    print('code this')
