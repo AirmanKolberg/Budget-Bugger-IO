@@ -66,7 +66,7 @@ def setup_incomes():
     return incomes
 
 
-def setup_savings_and_dailies(bills, incomes):
+def setup_savings_and_dailies(bills, incomes, assets):
 
     def get_sum_of_all_values(list_of_dicts):
 
@@ -110,7 +110,7 @@ percent     -    have it based on a percentage of your daily
         if option_selected == 'set':
 
             daily_savings = (get_float_value_from_user('Enter daily savings: ')).__round__(2)
-            daily_excluding_savings = daily_budget - daily_savings
+            daily_non_savings = daily_budget - daily_savings
             option_set = True
 
         elif option_selected == 'percent':
@@ -121,7 +121,7 @@ percent     -    have it based on a percentage of your daily
             percentage *= .01
 
             daily_savings = (daily_budget * percentage).__round__(2)
-            daily_excluding_savings = daily_budget - daily_savings
+            daily_non_savings = daily_budget - daily_savings
             option_set = True
 
         else:
@@ -131,10 +131,22 @@ percent     -    have it based on a percentage of your daily
     date_now = get_current_time_and_date()
     current_savings_amount = 0
 
+    # Calculate the total asset amount
+    total_assets = 0
+    for each_dict in assets:
+        for each_key in each_dict:
+            total_assets += each_dict[each_key]
+
+    # Subtract one month of bills from current assets for starting budget
+    current_budget_amount = (total_assets - (daily_loss * 30)).__round__(2)
+
     # {'Day Zero': [daily_addition_since_day_zero, current_savings_balance]}
     daily_framework = {
-        date_now: [daily_savings, current_savings_amount,
-                   daily_excluding_savings]
+        'date': date_now,
+        'daily_savings': daily_savings,
+        'current_savings': current_savings_amount,
+        'daily_budget': daily_non_savings,
+        'current_budget': current_budget_amount
     }
 
     return daily_framework
@@ -150,7 +162,17 @@ def setup_all():
     bills = setup_bills()
     incomes = setup_incomes()
 
-    daily_framework = setup_savings_and_dailies(bills, incomes)
+    """
+    ----------This returns the following dictionary:----------
+    daily_framework = {
+        'date': date_now,
+        'daily_savings': daily_savings,
+        'current_savings': current_savings_amount,
+        'daily_budget': daily_non_savings,
+        'current_budget': current_budget_amount
+    }
+    """
+    daily_framework = setup_savings_and_dailies(bills, incomes, assets)
 
 
 
