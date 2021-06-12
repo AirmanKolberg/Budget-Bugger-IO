@@ -135,6 +135,7 @@ percent     -    have it based on a percentage of your daily
 
     return savings_framework, daily_remaining
 
+
 # This will be for testing/debugging purposes
 def setup_all():
 
