@@ -69,6 +69,15 @@ def setup_all():
     bills = setup_bills()
     incomes = setup_incomes()
 
+    """
+    Theoretically, at startup, there should be no
+    need to make adjustments or transactions, so
+    these can be skipped, or just created as an
+    empty list just waiting to be appended.  :)
+    """
+
+    # NOTE:  Next- determine savings
+
 
 if __name__ == '__main__':
     pass
