@@ -171,6 +171,17 @@ def setup_all():
     """
     daily_framework = setup_savings_and_dailies(bills, incomes, assets)
 
+    budget_bugger_framework = {
+        'assets': assets,
+        'bills': bills,
+        'incomes': incomes,
+        'daily': daily_framework,
+        'transactions': list(),
+        'adjustments': list()
+    }
+
+    return budget_bugger_framework
+
 
 if __name__ == '__main__':
     pass
