@@ -1,4 +1,6 @@
 from user_inputs import *
+from data_adjustments import add_adjustment_or_transaction,\
+    create_adjustment_or_transaction
 
 
 def setup_assets():
@@ -68,6 +70,17 @@ def setup_all():
     assets = setup_assets()
     bills = setup_bills()
     incomes = setup_incomes()
+
+
+    # adjustments = list()
+    # transactions = list()
+    #
+    # while True:
+    #     try:
+    #         new_data = create_adjustment_or_transaction()
+    #         adjustments.append(new_data)
+    #     except KeyboardInterrupt:
+    #         print(f'Current list:  {adjustments}')
 
 
 if __name__ == '__main__':

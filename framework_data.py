@@ -1,22 +1,3 @@
-"""
-# This is the framework for the .json file
-framework = {
-    'assets': float(),
-    'bills': [{'bill name': [int(), float()]}],         # int = days between bills
-    'income': [{'source': [int(), float()]}],           # float = bill amount
-    'adjustments': [{float(): [datetime, str()]}],      # str = note
-                                                        # datetime = timestamp
-    'transactions': [{float(): [datetime, str()]}]
-    # 'daily shift' is the sum of all bills/income divided by 30.4
-    'daily_shift': float(),
-    'savings': float(),
-
-    # The budget of the current day
-    'day_budget': float()
-}
-"""
-
-
 def create_new_framework(assets, bills, incomes, adjustments,
                          transactions, daily_shift, savings,
                          day_budget):
