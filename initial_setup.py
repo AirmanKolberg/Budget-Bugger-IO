@@ -66,7 +66,7 @@ def setup_incomes():
     return incomes
 
 
-def setup_savings(bills, incomes):
+def setup_savings_and_dailies(bills, incomes):
 
     def get_sum_of_all_values(list_of_dicts):
 
@@ -110,7 +110,7 @@ percent     -    have it based on a percentage of your daily
         if option_selected == 'set':
 
             daily_savings = (get_float_value_from_user('Enter daily savings: ')).__round__(2)
-            daily_remaining = daily_budget - daily_savings
+            daily_excluding_savings = daily_budget - daily_savings
             option_set = True
 
         elif option_selected == 'percent':
@@ -121,7 +121,7 @@ percent     -    have it based on a percentage of your daily
             percentage *= .01
 
             daily_savings = (daily_budget * percentage).__round__(2)
-            daily_remaining = daily_budget - daily_savings
+            daily_excluding_savings = daily_budget - daily_savings
             option_set = True
 
         else:
@@ -129,11 +129,18 @@ percent     -    have it based on a percentage of your daily
             print(f"{option_selected} is neither 'set' nor 'percent', please try again.")
 
     date_now = get_current_time_and_date()
+    current_savings_amount = 0
 
     # {'Day Zero': [daily_addition_since_day_zero, current_savings_balance]}
-    savings_framework = {date_now: [daily_savings, 0]}
+    daily_framework = {
+        date_now: [daily_savings, current_savings_amount,
+                   daily_excluding_savings]
+    }
 
-    return savings_framework, daily_remaining
+    return daily_framework
+
+
+def calc_day_zero_budget(assets, daily_budget)
 
 
 # This will be for testing/debugging purposes
@@ -143,7 +150,9 @@ def setup_all():
     bills = setup_bills()
     incomes = setup_incomes()
 
-    savings, daily_budget = setup_savings(bills, incomes)
+    daily_framework = setup_savings_and_dailies(bills, incomes)
+
+
 
 
 if __name__ == '__main__':
