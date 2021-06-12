@@ -64,7 +64,7 @@ def setup_incomes():
 
 def setup_savings(bills, incomes):
 
-    def get_sum_of_all_values(list_of_dicts):
+    def get_sum_of_all_values(list_of_dicts, bills_or_incomes):
 
         # The effect of everything combined, beginning of course at 0
         total_daily_effect = 0
@@ -78,10 +78,16 @@ def setup_savings(bills, incomes):
                 # Returns the amount
                 amount = each_dict[the_key][1]
 
+                # Ensures bills negatively affect the total
+                if bills_or_incomes == 'bills':
+                    amount *= -1
+
                 # Number of days between payments
                 frequency = each_dict[the_key][0]
 
-
+                # Add overall effect to running total
+                daily_effect = (amount / frequency).__round__(2)
+                total_daily_effect += daily_effect
 
 
 
