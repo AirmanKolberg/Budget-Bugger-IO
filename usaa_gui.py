@@ -126,6 +126,7 @@ def get_last_ten_transactions_usaa(csv_file):
         last_ten_transactions.append(charge)
 
     for description in descriptions:
+
         # Remove excess spaces, *s and ~s
         description = description.replace('  ', '')
         description = description.replace('*', '')
