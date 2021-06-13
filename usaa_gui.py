@@ -3,6 +3,7 @@ from selenium import webdriver
 from time import sleep
 import pandas as pd
 from secrets import usaa_csv_location
+from system_commands import bash_command
 
 
 def usaa_gui_login(username, password):
@@ -148,6 +149,7 @@ def usaa_gui_login(username, password):
 
 
 # Returns dict():  {float(amount): 'description'}  with last 10 values
+# Standard USAA filename: bk_download.csv
 def get_last_ten_transactions_usaa(csv_file):
     py_csv = pd.read_csv(csv_file)
 
@@ -178,6 +180,9 @@ def get_last_ten_transactions_usaa(csv_file):
     # Add all data to the framework
     for i in range(len(last_ten_descriptions)):
         framework[last_ten_transactions[i]] = last_ten_descriptions[i]
+
+    # Remove file to avoid future duplicates
+    bash_command(f'rm {csv_file}')
 
     return framework
 
