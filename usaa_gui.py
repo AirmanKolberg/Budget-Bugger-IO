@@ -1,6 +1,7 @@
 import pyautogui as pag
 from selenium import webdriver
 from time import sleep
+import pandas as pd
 from system_commands import bash_command
 
 
@@ -106,6 +107,40 @@ def usaa_gui_login(username, password):
 
     # Close the webdriver
     firefox.close()
+
+
+# Returns dict():  {float(amount): 'description'}  with last 10 values
+def get_last_ten_transactions_usaa(csv_file):
+    py_csv = pd.read_csv(csv_file)
+
+    # Grab last 10 transactions and descriptions from .csv
+    amounts = py_csv.iloc[0:10, -1]
+    descriptions = py_csv.iloc[0:10, -3]
+
+    # Setup lists for final framework
+    last_ten_transactions = list()
+    last_ten_descriptions = list()
+
+    # Add all necessary data to the lists
+    for charge in amounts:
+        last_ten_transactions.append(charge)
+
+    for description in descriptions:
+        # Remove excess spaces, *s and ~s
+        description = description.replace('  ', '')
+        description = description.replace('*', '')
+        description = description.replace('~', '')
+
+        last_ten_descriptions.append(description)
+
+    # Initialise the empty framework.  {float(amount): 'description'}
+    framework = dict()
+
+    # Add all data to the framework
+    for i in range(len(last_ten_descriptions)):
+        framework[last_ten_transactions[i]] = last_ten_descriptions[i]
+
+    return framework
 
 
 # TESTING...
