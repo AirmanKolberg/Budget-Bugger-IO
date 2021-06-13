@@ -144,6 +144,5 @@ def get_last_ten_transactions_usaa(csv_file):
     return framework
 
 
-# TESTING...
-from secrets import usaa_user, usaa_pass
-usaa_gui_login(usaa_user, usaa_pass)
+if __name__ == '__main__':
+    pass
