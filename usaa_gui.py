@@ -2,7 +2,7 @@ import pyautogui as pag
 from selenium import webdriver
 from time import sleep
 import pandas as pd
-from system_commands import bash_command
+from secrets import usaa_csv_location
 
 
 def usaa_gui_login(username, password):
@@ -14,9 +14,49 @@ def usaa_gui_login(username, password):
 
     # Open USAA's website
     firefox.get('https://www.usaa.com/')
-    input('testing...')
+    sleep(5)
 
-    # SETUP THE DOWNLOADS FOLDER FIRST TO AVOID HAVING TO MOVE
+    # Open FireFox Preferences
+    pag.hotkey('command', ',')
+    sleep(2)
+
+    # Begin writing "downloads" in the search field
+    pag.write('dow', interval=0.08)
+    sleep(0.3)
+
+    # Click 'Choose' for new download location
+    pag.click(x=855, y=737)
+    sleep(1.5)
+
+    # Click the search field
+    pag.click(x=961, y=174)
+    sleep(0.2)
+
+    """
+    The location of the downloaded .csv file will
+    absolutely change before deploying the app next
+    week, please take note of this...
+    """
+
+    # Go through all directories/subdirectories
+    for location in usaa_csv_location:
+        x = usaa_csv_location[location][0]
+        y = usaa_csv_location[location][1]
+
+        pag.write(location, interval=0.08)
+        sleep(0.1)
+
+        # Enter directory listed as first search result
+        pag.doubleClick(x=x, y=y)
+        sleep(0.2)
+
+    # Click "Open" to select location
+    pag.click(x=1020, y=516)
+    sleep(0.2)
+
+    # Close the Preferences tab and continue
+    pag.hotkey('command', 'w')
+    sleep(0.2)
 
     # Click the button allowing you to navigate to login site
     firefox.find_element_by_class_name('profileWidget-buttonLeft').click()
