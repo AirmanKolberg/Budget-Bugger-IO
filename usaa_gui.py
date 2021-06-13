@@ -140,10 +140,8 @@ def usaa_gui_login(username, password):
     # Go through second set of PyAutoGUI steps
     go_through_pag_steps(pag_steps)
 
-    # Relocate the downloaded file
-
-    # FOR TESTING...
-    input()
+    # Give it some time to download
+    sleep(5)
 
     # Close the webdriver
     firefox.close()
