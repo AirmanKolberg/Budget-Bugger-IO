@@ -6,3 +6,4 @@ notes.txt
 commit.py
 commit.sh
 geckodriver.log
+__pycache__/
