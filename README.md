@@ -22,7 +22,7 @@ way- but this is for her, not me) so that it could be easily accessible.
 
 This app will run off of a simple Flask server, and will utilise an API, a 
 series of APIs, or a custom-built Selenium webscraper to retrieve financial 
-data.  Expected launch date: 21 June 2021.
+data.
 
 ---
 
