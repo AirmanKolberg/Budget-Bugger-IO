@@ -110,7 +110,7 @@ percent     -    have it based on a percentage of your daily
         if option_selected == 'set':
 
             daily_savings = (get_float_value_from_user('Enter daily savings: ')).__round__(2)
-            daily_non_savings = daily_budget - daily_savings
+            true_daily = daily_budget - daily_savings
             option_set = True
 
         elif option_selected == 'percent':
@@ -121,7 +121,7 @@ percent     -    have it based on a percentage of your daily
             percentage *= .01
 
             daily_savings = (daily_budget * percentage).__round__(2)
-            daily_non_savings = daily_budget - daily_savings
+            true_daily = daily_budget - daily_savings
             option_set = True
 
         else:
@@ -145,7 +145,7 @@ percent     -    have it based on a percentage of your daily
         'date': date_now,
         'daily_savings': daily_savings,
         'current_savings': current_savings_amount,
-        'daily_budget': daily_non_savings,
+        'daily_budget': true_daily,
         'current_budget': current_budget_amount
     }
 
