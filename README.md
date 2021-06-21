@@ -13,11 +13,6 @@ edit your data in an easy and simplistic way, allowing the users to have
 better confidence that the number being showed as your daily allowance, is 
 in fact your daily allowance.
 
-Ultimately, this application is being written as a gift for my fiancée.
-She likes the budget trackers that I use (and have built), so I wanted to 
-build one with a nice GUI (which I've hated since I was 10; CLI all the 
-way- but this is for her, not me) so that it could be easily accessible.
-
 ## Updates
 
 This app will run off of a simple Flask server, and will utilise an API, a 
