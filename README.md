@@ -3,7 +3,7 @@
 This app is a finance tracker I've built, since all other finance trackers 
 I've ever used just never fit my exact needs.  This app takes your total 
 income(s) and outgoing(s) and divvies up your money on a daily basis, 
-showing you- not the money that you have- but the money that you have to 
+showing you- not the money that you have- but the money that you have to
 spend.
 
 There exists already an app on the Apple App Store called "Daily Budget", 
