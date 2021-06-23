@@ -1,13 +1,6 @@
 from Backend import system_commands
 from user_inputs import get_float_value_from_user
 
-"""
-Note:
-    
-When any adjustments are made to the json file,
-everything must be recalculated on the backend.
-"""
-
 
 # Add an adjustment or transaction (denoted as a string)
 def add_adjustment_or_transaction(json_dict, new_data,
