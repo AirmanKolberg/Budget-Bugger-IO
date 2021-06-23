@@ -1,5 +1,5 @@
 test.py
-secrets.py
+Backend/secrets.py
 testFile.json
 push.sh
 notes.txt
