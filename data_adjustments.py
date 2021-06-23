@@ -1,4 +1,4 @@
-from system_commands import get_current_time_and_date
+from Backend import system_commands
 from user_inputs import get_float_value_from_user
 
 """
@@ -18,7 +18,7 @@ def add_adjustment_or_transaction(json_dict, new_data,
 
 def create_adjustment_or_transaction(adjustment_or_transaction):
 
-    now = get_current_time_and_date()
+    now = system_commands.get_current_time_and_date()
 
     # Get transaction/adjustment detail
     note = input('Note: ')

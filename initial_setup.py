@@ -1,5 +1,5 @@
 from user_inputs import *
-from system_commands import get_current_time_and_date
+from Backend import system_commands
 
 
 def setup_assets():
@@ -128,7 +128,7 @@ percent     -    have it based on a percentage of your daily
 
             print(f"{option_selected} is neither 'set' nor 'percent', please try again.")
 
-    date_now = get_current_time_and_date()
+    date_now = system_commands.get_current_time_and_date()
     current_savings_amount = 0
 
     # Calculate the total asset amount
