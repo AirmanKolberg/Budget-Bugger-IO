@@ -52,3 +52,6 @@ choose whether they want to save any money, or just have the running total just 
 literally all of the money they could possibly spend before not having enough to
 cover a month's worth of bills (which is the goal of this app, to always keep you
 above one month's worth of expenses in spare cash outside of savings).
+
+Once we have the `new_assets` variable determined, Budget Bugger will then take the
+totality of the monthly bills due and divide them into days.
