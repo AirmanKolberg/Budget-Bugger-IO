@@ -13,7 +13,8 @@ CLI, but now I will be recreating (and completely re-writing) a simple GUI versi
 This is not because I would like this- oh, no, I loath GUI applications.  If my fingers
 leave the keys, I'm a sad panda.  No, this is primarily because my fiancée likes the
 CLI version of my app.  So now I'm making her a version that she could use, and I'll
-probably just host it off of a Raspberry Pi 4 or something.
+probably just host it off of a Raspberry Pi 4 or something.  And the code will of course
+remain available here if you yourself decide to host this app for yourself.
 
 ## The Logic Behind It
 
