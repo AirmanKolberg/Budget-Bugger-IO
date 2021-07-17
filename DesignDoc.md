@@ -27,7 +27,7 @@ calculations on the back end.  These variables include:
   - Cash on hand
   - Total(s) in checking account(s)
   - Total(s) in savings account(s)
-  - etc.  
+  - etc.
 - Bills
   - Mortgage/rent
   - Auto insurance
