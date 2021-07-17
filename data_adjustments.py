@@ -27,3 +27,8 @@ def create_adjustment_or_transaction(adjustment_or_transaction):
     data = {amount: [now, note]}
 
     return data
+
+
+if __name__ == '__main__':
+
+    pass
