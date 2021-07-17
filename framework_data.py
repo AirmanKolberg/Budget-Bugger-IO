@@ -38,4 +38,5 @@ def get_total_adjustments_or_transactions(dictionary, data_point):
 
 
 if __name__ == '__main__':
+    
     pass
