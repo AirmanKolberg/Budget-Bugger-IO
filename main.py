@@ -9,5 +9,5 @@ if __name__ == '__main__':
     # Get the backend data collected for the app
     bug_framework = setup_all()
 
-    # Save it to JSON
+    # Save dictionary to JSON
     dict_to_json(bug_framework, f'{user_id}BugReport.json')
